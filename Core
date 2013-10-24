@@ -1,0 +1,44 @@
+ private void Calcular_Click(object sender, EventArgs e)
+        {
+
+            //Declaro Variables
+            int aux = 0;
+            int factorialA = 1;
+            int factorialB = 1;
+            int factorialC = 1;
+            int FactorialMasita = 1;
+            //Bandeja
+            const int bandeja = 3*3;
+
+            //Calculamos
+            //Como primera instancia calculo las combinaciones para dulces, frutas y confites dejando de lado la masita temporalmente
+
+            aux = bandeja - 3; //restamos 3 porque estos estaran ocupados horizontal o verticalmente
+            
+            //Aplicamos combinatoria de conjuntos y calculamos las posibles combinaciones de los 6 lugares restantes
+
+            for (int i = aux; i > 0; i--)
+            {
+               factorialA = factorialA * i;
+            }
+            for (int j = 3; j > 0; j--)
+            {
+                factorialB = factorialB * j;
+                factorialC = factorialC * j;
+            }
+            //Ahora calcula la masita, como estas es especial y puede estar en cualquier lugar de la bandeja 
+            for (int i = bandeja; i > 0; i--)
+            {
+                FactorialMasita = FactorialMasita * i;
+            }
+
+            int totalfactorial = factorialB * factorialC;
+            int combinatoria1 = factorialA / totalfactorial;
+            //lo multiplico por la cantidad de posibilidades que tengo en la bandeja y por la cantidad de materia prima sumado a la masita
+            int tot = combinatoria1 * aux * 3;
+            tot = tot + FactorialMasita;
+      
+
+            MessageBox.Show("Cantidad Maxima de receteas: " + tot,"Salida");
+           
+        }
